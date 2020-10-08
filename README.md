@@ -97,6 +97,6 @@ The `hardening` folder contains C code samples implementing several techniques a
 
 
 ## Acknowledgement
-Chaos Duck uses SWIFI tool (developed by Antoine Chenoy) to inject faults.
+Chaos Duck uses [SWIFI tool](https://github.com/chenoya/swifi-tool) (developed by Antoine Chenoy) to inject faults.
 
 Goose image was taken from [here](https://www.teepublic.com/en-gb/pin/7426379-goose-with-a-knife)
