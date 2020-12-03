@@ -1,10 +1,8 @@
 # Chaos Duck
 
-![Goose with a knife](/goose-knife.jpg?raw=true)
-
 Chaos Duck as a name suggests creates chaos. In our case, however, chaos is good because it allows us to find out something that we couldn't otherwise. 
 
-Chaos Duck grabs a given binary (x86_64,x86_32, or ARM) and produces new binaries out of it with the injected faults. It can fault branch instruction targets, flip bits, zero bytes or even words in some instructions, and even NOP isntructions completely. For each fault injected a new "faulty" binary is generated automatically. The Chaos Duck then proceeds to run all of the generated "faulty" binaries and collects the results of their execution (stdout, stderr, exit code, and if the execution was halted by a timeout). 
+Chaos Duck grabs a given binary (x86_64,x86_32, or ARM) and produces new binaries out of it with the injected faults. For now, the faults introduced are modified jump instruction targets. The Chaos Duck then proceeds to run all of the generated "faulty" binaries and collects the results of their execution (stdout, stderr, exit code, and if the execution was halted by a timeout). 
 
 If the input binary is an implementation of some encryption algorithm, there is a high chance that Chaos Duck will be able to generate a "faulty" binary that would output plain text instead of a cipher.
 
@@ -57,6 +55,13 @@ or for ARM binaries:
 arm-linux-gnueabi-objdump -S test-arm.out
 ```
 
+## [Optional] Debugging
+
+To run a given arm binary use qemu-arm command, like so
+```
+qemu-arm -L /usr/arm-linux-gnueabi/ ./bl_at_0x1508_from_0xd1c_to_0x6e8 deadbeef deadc0de
+```
+
 ## Running
 
 Run Chaos Duck expects two CLI arguments and can be run using the following command:
@@ -97,6 +102,6 @@ The `hardening` folder contains C code samples implementing several techniques a
 
 
 ## Acknowledgement
-Chaos Duck uses [SWIFI tool](https://github.com/chenoya/swifi-tool) (developed by Antoine Chenoy) to inject faults.
+Chaos Duck uses SWIFI tool (developed by Antoine Chenoy) to inject faults.
 
-Goose image was taken from [here](https://www.teepublic.com/en-gb/pin/7426379-goose-with-a-knife)
+
